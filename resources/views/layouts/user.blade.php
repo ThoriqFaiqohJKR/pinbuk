@@ -42,7 +42,7 @@
 
         <div class="w-16 h-12 sm:w-20 sm:h-14 lg:w-24 lg:h-16 flex items-center justify-center">
           <a href="{{ route('user.buku.index') }}">
-            <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
+            <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
           </a>
 
         </div>
@@ -202,7 +202,7 @@
     <div class="flex flex-col sm:flex-row items-start sm:items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2 border-black">
       <div class="mx-auto sm:mx-0">
         <a href="{{ route('user.buku.index') }}">
-          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-24 h-12 object-contain" />
+          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('foto/Logo Auriga.png') }}" class="w-24 h-12 object-contain" />
         </a>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:flex flex-wrap gap-x-6 sm:gap-x-4 md:gap-x-6 lg:gap-x-12 xl:gap-x-12 2xl:gap-x-16 gap-y-2 text-xs text-black px-4 sm:px-4 md:px-20 lg:px-22 xl:px-44 2xl:px-54 w-full justify-start mt-4 text-left">

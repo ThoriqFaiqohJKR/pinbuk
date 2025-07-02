@@ -40,7 +40,7 @@
       <div class="flex items-center gap-4 sm:gap-8 md:gap-14 lg:gap-20 xl:gap-34">
         <!-- Logo -->
         <div class="w-16 h-12 sm:w-20 sm:h-14 lg:w-24 lg:h-16 flex items-center justify-center">
-          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
+          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
         </div>
 
 

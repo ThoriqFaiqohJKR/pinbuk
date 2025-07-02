@@ -244,7 +244,7 @@ class UserIndex extends Component
         'created_at' => now(),
         'updated_at' => now(),
     ]);
-
+ 
     // ✅ Reset form
     $this->reset([
         'nip',
