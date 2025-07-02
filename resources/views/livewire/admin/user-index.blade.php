@@ -3,6 +3,9 @@
     users: @entangle('users').defer,
     selectedUser: null,
     confirmDeleteOpen: false,
+     imagePreview: '',
+            dropdownGenreOpen: false,
+            dropdownLokasiOpen: false,
     deleteId: null
 }" x-cloak>
 
@@ -163,16 +166,18 @@
                     </div>
 
                     {{-- Foto --}}
-                    <div class="md:col-span-2">
-                        <label class="block text-gray-700 font-medium mb-1">Foto</label>
-                        <input type="file" wire:model="foto"
-                            class="w-full border border-gray-300 rounded px-3 py-2" accept="image/*" />
-                        @if ($foto)
-                        <div class="mt-2 w-24 h-24 object-cover rounded">
-                            <img src="{{ $foto->temporaryUrl() }}" />
-                        </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-1">Foto Buku</label>
+                        <input wire:model="foto" type="file" id="photoBuku"
+                            @change="imagePreview = $event.target.files[0] ? URL.createObjectURL($event.target.files[0]) : ''"
+                            class="w-full px-3 py-2 border  -lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        @error('foto') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                    </div>
 
-                        @endif
+                    {{-- Preview Foto --}}
+                    <div x-show="imagePreview" class="mb-3">
+                        <img :src="imagePreview" alt="Preview Buku"
+                            class="w-32 h-48 object-cover  -lg mx-auto shadow-md" />
                     </div>
 
                     {{-- Tombol --}}
