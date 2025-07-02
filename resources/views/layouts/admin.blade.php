@@ -155,7 +155,7 @@
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
     <div class="flex flex-col sm:flex-row items-start sm:items-center px-4 sm:px-8 md:px-10 lg:px-22 xl:px-18 2xl:px-38 py-4 border-b-2 border-black">
       <div class="mx-auto sm:mx-0">
-        <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-24 h-12 object-contain" />
+        <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('foto/Logo Auriga.png') }}" class="w-24 h-12 object-contain" />
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 lg:flex flex-wrap gap-x-6 md:gap-x-4 lg:gap-x-16 xl:gap-x-22 2xl:gap-x-20 gap-y-2 text-xs text-black px-4 sm:px-8 md:px-24 lg:px-38 xl:px-80 2xl:px-80 w-full justify-start mt-4 text-left">
 
