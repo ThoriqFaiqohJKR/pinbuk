@@ -26,7 +26,7 @@
   <!--navbar-->
   <div class="w-full sticky top-0 bg-white z-[99999999]">
 
-    <div class="bg-[#1a3a05] text-white text-xs font-semibold flex justify-end py-2 sm:pl-4 px-6 sm:px-[11.4rem]">
+    <div class="bg-[#1a3a05] text-white text-xs font-semibold flex justify-end py-2 px-6 sm:px-6 md:px-14 lg:px-20 xl:px-46 2xl:px-46">
       <a class="hover:underline" href="#">Buku terbaru</a>
       <a class="hover:underline ml-9" href="#">Hubungi kami</a>
     </div>
@@ -35,12 +35,15 @@
     $userId = session('user_id');
     $user = $userId ? DB::table('pengguna')->where('id', $userId)->first() : null;
     @endphp
-    <header class="flex items-center  py-2 sm:px-[10.5rem]">
-      <!-- Kiri: Logo + Kategori -->
-      <div class="flex items-center gap-[9.9rem] flex-shrink-0 mr-[0.8rem]">
 
-        <div class="w-24 h-16 lg:w-24 lg:h-16 sm:w-12 sm:h-12 flex items-center justify-center">
-          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" class="sm:w-24 sm:h-12" height="64" src="{{asset('storage/foto/Logo Auriga.png') }}" width="96" />
+    <header class="flex items-center  py-2 px-2 sm:px-6 md:px-10 lg:px-20 xl:px-40">
+      <!-- Kiri: Logo + Kategori -->
+      <div class="flex items-center flex-shrink-0 mr-2 sm:mr-4 md:mr-4 lg:mr-4 xl:mr-2 gap-4 sm:gap-8 md:gap-12 lg:gap-20 xl:gap-34">
+
+        <div class="w-16 h-12 sm:w-20 sm:h-14 lg:w-24 lg:h-16 flex items-center justify-center">
+          <a href="{{ route('user.buku.index') }}">
+            <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
+          </a>
 
         </div>
 
@@ -48,7 +51,7 @@
 
 
         <label
-          class="font-bold text-sm hidden sm:block cursor-pointer"
+          class="hidden sm:inline font-bold text-sm cursor-pointer"
           @click.prevent="showModal = !showModal">
           Kategori
         </label>
@@ -57,12 +60,10 @@
       <!-- Kanan: Input + User Info -->
       <div class="flex items-center justify-between w-full relative">
         <!-- Input -->
-        <input
-          id="kategori"
-          type="text"
-          placeholder="Cari kategori..."
-          aria-label="Kategori"
-          class="border border-black text-sm py-1 px-2 w-full lg:mr-36 sm:mr-12 mr-6   max-w-full sm:max-w-none" />
+        <div class="flex-1 min-w-0 border border-black text-sm   focus:outline-none focus:ring-1 focus:ring-green-700 mr-4 sm:mr-6 md:mr-10 lg:mr-29 xl:mr-41">
+          @livewire('user.search-navbar')
+        </div>
+
 
 
         <!-- User Info -->
@@ -81,32 +82,16 @@
           @click.away="dropdownOpen = false"
           class="relative flex items-center space-x-2 sm:space-x-2 flex-shrink-0 cursor-pointer select-none sm:mr-0 mr-3 sm:ml-0 ml-auto">
           <!-- Avatar -->
-          @if(isset($user))
-          <!-- Avatar -->
-          @php
-          $statusColors = [
-          'red' => 'border-red-500',
-          'green' => 'border-green-500',
-          'yellow' => 'border-yellow-500',
-          'black' => 'border-black',
-          ];
-
-          $borderClass = $statusColors[$user->status] ?? 'border-gray-400';
-          @endphp
-
           <img
             alt="User avatar"
-            class="w-10 h-10 sm:w-10 sm:h-10 rounded-full border {{ $borderClass }} border-[3px] p-[2px] object-cover"
-            src="{{ $user->foto}}" />
+            class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-10 lg:h-10 rounded-full border-red-600 object-cover"
+            src="{{asset('storage/foto/pp.jpeg') }}" />
 
 
           <p class="font-bold text-sm sm:flex pr-3 hidden">
-            Hi, 
-          
-               {{ $user->nama }}
-      
+            Hi,
+            <span>Pengguna</span>
           </p>
-          @endif
 
           <!-- Panah hanya untuk mobile -->
           <p class="font-bold text-sm sm:hidden">
@@ -121,21 +106,20 @@
             @click.away="dropdownOpen = false"
             class="absolute right-0 top-full mt-2 w-34 bg-white border border-gray-300 z-50 shadow-md"
             x-transition>
-            
+
 
             <a href="{{ route('user.buku.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:text-red-700">Buku</a>
-            <a href="aset" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:text-red-700">Aset</a>
+
             <a href="{{ route('user.peminjaman.index')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:text-red-700">Riwayat</a>
-            
-            <form id="logout-form" action="{{ route('user.logout') }}" method="POST" class="hidden">
 
+            <form id="logout-form" method="POST" action="{{ route('user.logout') }}">
+              @csrf
+              <a href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:text-red-700"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Logout
+              </a>
             </form>
-
-            <a href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:text-red-700"
-              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              Logout
-            </a>
 
 
 
@@ -151,14 +135,14 @@
     <div class="flex justify-center">
       <header
 
-        class="flex hidden sm:flex justify-center -translate-y-6">
-        <nav class="flex justify-center gap-[1.6rem] text-[13px] text-black w-full">
-          <a class="hover:underline" href="#">Hutan</a>
-          <a class="hover:underline" href="#">Kebun</a>
-          <a class="hover:underline" href="#">Tambang dan Energi</a>
-          <a class="hover:underline" href="#">Hukum</a>
-          <a class="hover:underline" href="#">Novel</a>
-          <a class="hover:underline" href="#">Lainnya</a>
+        class="hidden lg:flex justify-center -translate-y-6">
+        <nav class="flex justify-center lg:gap-[1.6rem] 2xl:gap-[2.4rem] text-[13px] text-black w-full">
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang dan Energi</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 4)}}">Hukum</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
         </nav>
       </header>
     </div>
@@ -172,33 +156,16 @@
     x-transition
     x-cloak
     @click.self="showModal = false"
-    class="fixed inset-0  z-[199999999] pl-119 mt-2 pr-102 flex items-start justify-start pt-21">
-    <div class="bg-white border border-gray-300 shadow-lg w-full max-w-7xl py-8 px-8 mx-4">
-      <div class="flex flex-col space-y-8 mb-2">
-        <div>
-          <p class="font-bold text-sm leading-tight ">Hukum</p>
-
-        </div>
-        <div>
-          <p class="font-bold text-sm leading-tight ">Hutan</p>
-
-        </div>
-        <div>
-          <p class="font-bold text-sm leading-tight ">Kebun</p>
-
-        </div>
-        <div>
-          <p class="font-bold text-sm leading-tight ">Tambang dan Energi</p>
-
-        </div>
-        <div>
-          <p class="font-bold text-sm leading-tight">Novel</p>
-
-        </div>
-        <div>
-          <p class="font-bold text-sm leading-tight ">Lainnya</p>
-
-        </div>
+    class="fixed inset-0 z-[199999999] flex items-start justify-center pt-24 px-4 sm:px-6 md:px-60 lg:px-82 xl:px-114">
+    <div class="bg-white border border-gray-300 shadow-lg w-full 
+              px-4 sm:px-6 md:p-8 lg:p-6 xl:p-6">
+      <div class="flex flex-col space-y-6">
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hukum</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 2)}}">Hutan</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 3)}}">Kebun</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 4)}}">Tambang dan Energi</a>
+        <p class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
+          <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
       </div>
     </div>
   </div>
@@ -206,32 +173,38 @@
 
 
   <!--content-->
-  <div>
-    <div>
-      @yield('content')
-    </div>
+
+
+  <div class="flex-1">
+    @yield('content')
   </div>
+
+
 
   <!--footer-->
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
-    <div class="flex flex-col sm:flex-row items-start sm:items-center lg:px-44 px-2 py-4 border-b-2 border-black">
-      <div class="mx-auto sm:mx-0 lg:mt-0 sm:w-auto">
-        <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" class="sm:w-24 sm:h-12" height="64" src="{{asset('storage/foto/Logo Auriga.png') }}" width="96" />
+    <div class="flex flex-col sm:flex-row items-start sm:items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2 border-black">
+      <div class="mx-auto sm:mx-0">
+        <a href="{{ route('user.buku.index') }}">
+          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-24 h-12 object-contain" />
+        </a>
       </div>
-      <div class="grid grid-cols-2 sm:flex flex-wrap sm:gap-x-22 gap-x-6 gap-y-2 text-xs text-black px-4 sm:px-12 lg:px-36 w-full justify-start mt-4 text-left">
-        <p class="font-semibold">Hutan</p>
-        <p class="font-semibold">Kebun</p>
-        <p class="font-semibold">Tambang dan Energi</p>
-        <p class="font-semibold">Hukum</p>
-        <p class="font-semibold">Novel</p>
-        <p class="font-semibold">Lainnya</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:flex flex-wrap gap-x-6 sm:gap-x-4 md:gap-x-6 lg:gap-x-12 xl:gap-x-12 2xl:gap-x-16 gap-y-2 text-xs text-black px-4 sm:px-4 md:px-20 lg:px-22 xl:px-44 2xl:px-54 w-full justify-start mt-4 text-left">
+
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang dan Energi</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 4)}}">Hukum</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
       </div>
+
 
 
 
     </div>
-    <div class="max-w-7xl mx-auto px-6 sm:px-36 pb-1 text-center text-[12.5px] text-black select-none">
-      COPYRIGHT © 2025 AURIGA NUSANTARA. ALL RIGHTS RESERVED.
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 pb-1 text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[9px] text-black select-none py-2">
+      © 2025 AURIGA NUSANTARA. SELURUH HAK CIPTA DILINDUNGI UNDANG-UNDANG.
     </div>
     <div class="bg-[#1a3a05] text-white text-xs font-semibold flex justify-end px-6 sm:px-36 py-2">
     </div>

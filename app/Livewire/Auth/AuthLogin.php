@@ -41,7 +41,7 @@ class AuthLogin extends Component
     
         // Redirect sesuai level user
         if ($user->level === 'admin') {
-            return redirect('/admin/dashboard');
+            return redirect('/admin/buku');
         } elseif ($user->level === 'user') {
             return redirect('/user/dashboard');
         }
@@ -49,8 +49,6 @@ class AuthLogin extends Component
         $this->error = "Invalid user level!";
     }
     
-
-    // Render tampilan login
     public function render()
     {
         return view('livewire.auth.auth-login');

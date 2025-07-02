@@ -77,6 +77,8 @@ Route::prefix('user')->name('user.')->middleware([UserAccess::class . ':user'])-
         Route::get('/', [UserAcessController::class, 'indexbuku'])->name('index');
         Route::get('{id}/detail', [UserAcessController::class, 'show'])->name('detail');
         Route::get('{id}/katalog', [UserAcessController::class, 'katalog'])->name('katalog');
+        Route::get('/search/{key}', [UserAcessController::class, 'key'])->name('user.search.result');
+        
     });
 
     Route::prefix('peminjaman')->name('peminjaman.')->group(function () {
@@ -88,5 +90,5 @@ Route::prefix('user')->name('user.')->middleware([UserAccess::class . ':user'])-
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });

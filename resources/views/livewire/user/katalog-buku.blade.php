@@ -1,23 +1,23 @@
 <div>
-    {{-- The whole world belongs to you. --}}
-    <div class="px-4 sm:px-12 md:px-12 lg:px-18 lg:px-24 xl:px-42 2xl:px-42 py-6">
+  {{-- The whole world belongs to you. --}}
+  <div class="px-4 sm:px-12 md:px-12 lg:px-18 lg:px-24 xl:px-42 2xl:px-42 py-6">
     <h2 class="text-xl font-bold mb-4">{{ $namaKategori }}</h2>
 
-@if ($buku->isEmpty())
-  <div class="text-gray-500 text-sm px-4 py-6">
-    Tidak ada buku yang tersedia.
-  </div>
-@else
-  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-5 gap-12 sm:gap-2 md:gap-4 lg:gap-8  xl:gap-12 2xl:gap-12">
+    @if ($buku->isEmpty())
+    <div class="text-gray-500 text-sm px-4 py-6">
+      Tidak ada buku yang tersedia.
+    </div>
+    @else
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-5 gap-12 sm:gap-2 md:gap-4 lg:gap-8  xl:gap-12 2xl:gap-12">
 
-    @foreach ($buku as $bukus)
+      @foreach ($buku as $bukus)
       @php
-        $objectClass = match($bukus->position_foto ?? 'center') {
-            'top' => 'object-top',
-            'bottom' => 'object-bottom',
-            default => 'object-center'
-        };
-        $foto = $bukus->foto_buku ? asset('storage/' . $bukus->foto_buku) : asset('images/placeholder.png');
+      $objectClass = match($bukus->position_foto ?? 'center') {
+      'top' => 'object-top',
+      'bottom' => 'object-bottom',
+      default => 'object-center'
+      };
+      $foto = $bukus->foto_buku ? asset('storage/' . $bukus->foto_buku) : asset('images/placeholder.png');
       @endphp
 
       <a
@@ -27,11 +27,10 @@
           {{ $bukus->stok < 1 
               ? 'pointer-events-none opacity-70 cursor-not-allowed border-gray-200 hover:shadow-md'
               : 'hover:scale-105 hover:border-green-500 hover:shadow-md border-abu' }}"
-        aria-disabled="{{ $bukus->stok < 1 ? 'true' : 'false' }}"
-      >
+        aria-disabled="{{ $bukus->stok < 1 ? 'true' : 'false' }}">
         <!-- Judul -->
         <div class="p-2 min-h-[72px]">
-          <p class="font-semibold text-xs break-words whitespace-normal leading-snug">
+          <p class="font-semibold text-xs break-words whitespace-normal leading-snug line-clamp-3">
             {{ $bukus->nama_buku }}
           </p>
         </div>
@@ -41,16 +40,14 @@
           <img
             src="{{ $bukus->foto_buku }}"
             alt="{{ $bukus->nama_buku }}"
-            class="w-full h-full object-cover {{ $objectClass }}"
-          />
+            class="w-full h-full object-cover {{ $objectClass }}" />
         </div>
       </a>
-    @endforeach
+      @endforeach
+    </div>
   </div>
-  </div>
-@endif
+  @endif
 
 </div>
 
 </div>
- 

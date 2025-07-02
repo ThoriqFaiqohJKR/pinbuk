@@ -106,3 +106,4 @@
     <div class="text-sm text-gray-600">Kamu belum meminjam apa pun.</div>
     @endforelse
 </div>
+</div>

@@ -1,4 +1,6 @@
 <div>
+    {{-- If your happiness depends on money, you will never be happy with yourself. --}}
+    <div>
 
   {{-- If your happiness depends on money, you will never be happy with yourself. --}}
 
@@ -183,4 +185,5 @@
     </style>
   </div>
 
+</div>
 </div>

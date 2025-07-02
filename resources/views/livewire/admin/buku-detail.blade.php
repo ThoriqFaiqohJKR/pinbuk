@@ -115,8 +115,7 @@
                         </a>
 
                         <a onclick="window.open('{{ url('/storage/qr_codes/buku/qr_' . $buku->id . '.png') }}').print()">
-                            <button class="border border-indigo-700 hover:bg-indigo-100 mt-2 font-bold text-sm px-4 py-2 w-32 transition text-indigo-700"
-                              >
+                            <button class="border border-indigo-700 hover:bg-indigo-100 mt-2 font-bold text-sm px-4 py-2 w-32 transition text-indigo-700">
                                 Cetak QR
                             </button>
                         </a>

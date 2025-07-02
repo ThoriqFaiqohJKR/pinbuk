@@ -2,7 +2,7 @@
     {{-- Care about people's approval and you will be their prisoner. --}}
     <div class="bg-white" x-data="{ showTerms: false, agreed: false }" @close-modal.window="showTerms = false">
 
-        <div class="flex flex-col items-start px-6 sm:px-10 md:px-20 lg:px-[11.4rem] py-4 mt-10">
+        <div class="flex flex-col items-start px-6 sm:px-10 md:px-20 lg:px-22 xl:px-42 py-4 mt-10">
             <div class="w-full">
                 <p class="font-bold text-xs mb-1">
                     Hutan
@@ -19,10 +19,10 @@
                 </div>
 
                 <!-- Konten kanan -->
-                <div class="flex flex-col justify-between h-[397px] flex-1">
+                <div class="flex flex-col justify-between min-h-[397px] flex-1">
                     <!-- Bagian Atas: Judul & Ringkasan -->
                     <div>
-                        <p class="font-bold text-md pt-2 sm:pt-0 lg:pr-102 lg:mb-1 mb-2">
+                        <p class="font-bold text-md pt-2 sm:pt-0 pr-12 lg:pr-20xl:pr-102 lg:mb-1 mb-2">
                             {{ $buku->nama_buku }}
                         </p>
 
@@ -31,7 +31,7 @@
                             x-data="{ expanded: false, showToggle: false }"
                             x-init="$nextTick(() => { showToggle = $refs.ringkasan.scrollHeight > $refs.ringkasan.clientHeight })">
                             <div x-ref="ringkasan"
-                                class="transition-all space-y-3 overflow-hidden text-xs  lg:mr-70 sm:max-w-[40rem]"
+                                class="transition-all space-y-3 overflow-hidden text-sm  lg:mr-70 sm:max-w-[40rem]"
                                 :class="{ 'line-clamp-5': !expanded }">
                                 {!! $buku->ringkasan !!}
                             </div>
@@ -47,15 +47,19 @@
                     <!-- Bagian Bawah: Info & Tombol -->
                     <div class="mt-4 space-y-1">
                         <div class="opacity-90">
-                        <p class="text-[12px]">
-                            Penulis : {{ $buku->penulis ?? '-' }}
-                        </p>
-                        <p class="text-xs">
-                            Tahun Terbit : {{ $buku->terbit_tahun ?? '-' }}
-                        </p>
-                        <p class="text-xs">
-                            Penerbit : {{ $buku->penerbit ?? '-' }}
-                        </p>
+                            <p class="text-[12px]">
+                                Penulis : {{ $buku->penulis ?? '-' }}
+                            </p>
+                            <p class="text-xs">
+                                Tahun Terbit : {{ $buku->terbit_tahun ?? '-' }}
+                            </p>
+                            <p class="text-xs">
+                                Penerbit : {{ $buku->penerbit ?? '-' }}
+                            </p>
+                            <p class="text-xs text-gray-600">
+                                Stok: {{ $buku->total_stok }}
+                            </p>
+
                         </div>
 
                         <button class="mt-2 bg-gray-300 font-bold text-sm px-[0.6rem] py-[0.4rem] w-max"
@@ -70,7 +74,7 @@
             <div class="mt-10">
                 <p class="font-bold text-xs mb-3">Rekomendasi Buku</p>
 
-                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-5 gap-12 sm:gap-2 md:gap-4 lg:gap-8  xl:gap-12 2xl:gap-12">
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-12 sm:gap-2 md:gap-4 lg:gap-8  xl:gap-12 2xl:gap-12">
                     @foreach ($otherBooks as $item)
                     <a href="{{ url('/user/buku/' . $item->id . '/detail') }}"
                         class="bg-white border border-gray-200 shadow-sm flex flex-col hover:scale-105 hover:shadow-md hover:border-green-500 transition sm:w-48 sm:h-48 w-full">
@@ -89,10 +93,10 @@
                     </a>
                     @endforeach
                 </div>
- 
+
                 {{-- PAGINATION --}}
                 <div class="mt-4 flex justify-end">
-                     {{ $otherBooks->links('pagination.custom') }}
+                    {{ $otherBooks->links('pagination.custom') }}
                 </div>
             </div>
 

@@ -41,7 +41,9 @@
       <div class="flex items-center flex-shrink-0 mr-2 sm:mr-4 md:mr-4 lg:mr-4 xl:mr-2 gap-4 sm:gap-8 md:gap-12 lg:gap-20 xl:gap-34">
 
         <div class="w-16 h-12 sm:w-20 sm:h-14 lg:w-24 lg:h-16 flex items-center justify-center">
-          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
+          <a href="{{ route('user.buku.index') }}">
+            <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
+          </a>
 
         </div>
 
@@ -58,12 +60,10 @@
       <!-- Kanan: Input + User Info -->
       <div class="flex items-center justify-between w-full relative">
         <!-- Input -->
-        <input
-          id="kategori"
-          type="text"
-          placeholder="Cari kategori..."
-          aria-label="Kategori"
-          class="flex-1 min-w-0 border border-black text-sm py-1 px-2  focus:outline-none focus:ring-1 focus:ring-green-700 mr-4 sm:mr-6 md:mr-10 lg:mr-29 xl:mr-41" />
+        <div class="flex-1 min-w-0 border border-black text-sm   focus:outline-none focus:ring-1 focus:ring-green-700 mr-4 sm:mr-6 md:mr-10 lg:mr-29 xl:mr-41">
+          @livewire('user.search-navbar')
+        </div>
+
 
 
         <!-- User Info -->
@@ -87,7 +87,7 @@
           @php
           $statusColors = [
           'red' => 'border-red-500',
-          'green' => 'border-green-500',
+          'green' => 'border-auriga',
           'yellow' => 'border-yellow-500',
           'black' => 'border-black',
           ];
@@ -125,17 +125,17 @@
 
 
             <a href="{{ route('user.buku.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:text-red-700">Buku</a>
-            
+
             <a href="{{ route('user.peminjaman.index')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:text-red-700">Riwayat</a>
 
-             <form id="logout-form" method="POST" action="{{ route('user.logout') }}">
-            @csrf
-            <a href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:text-red-700"
-              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              Logout
-            </a>
-          </form>
+            <form id="logout-form" method="POST" action="{{ route('user.logout') }}">
+              @csrf
+              <a href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:text-red-700"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Logout
+              </a>
+            </form>
 
 
 
@@ -151,15 +151,14 @@
     <div class="flex justify-center">
       <header
 
-        class="hidden lg:flex justify-center -translate-y-6"
->
+        class="hidden lg:flex justify-center -translate-y-6">
         <nav class="flex justify-center lg:gap-[1.6rem] 2xl:gap-[2.4rem] text-[13px] text-black w-full">
-          <a class="hover:underline" href="#">Hutan</a>
-          <a class="hover:underline" href="#">Kebun</a>
-          <a class="hover:underline" href="#">Tambang dan Energi</a>
-          <a class="hover:underline" href="#">Hukum</a>
-          <a class="hover:underline" href="#">Novel</a>
-          <a class="hover:underline" href="#">Lainnya</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang dan Energi</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 4)}}">Hukum</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
         </nav>
       </header>
     </div>
@@ -177,12 +176,12 @@
     <div class="bg-white border border-gray-300 shadow-lg w-full 
               px-4 sm:px-6 md:p-8 lg:p-6 xl:p-6">
       <div class="flex flex-col space-y-6">
-        <p class="font-bold text-sm leading-tight">Hukum</p>
-        <p class="font-bold text-sm leading-tight">Hutan</p>
-        <p class="font-bold text-sm leading-tight">Kebun</p>
-        <p class="font-bold text-sm leading-tight">Tambang dan Energi</p>
-        <p class="font-bold text-sm leading-tight">Novel</p>
-        <p class="font-bold text-sm leading-tight">Lainnya</p>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hukum</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 2)}}">Hutan</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 3)}}">Kebun</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 4)}}">Tambang dan Energi</a>
+        <p class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
+          <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
       </div>
     </div>
   </div>
@@ -191,32 +190,37 @@
 
   <!--content-->
 
-  <div>
-    @yield('content')
-  </div>
+  
+    <div class="flex-1">
+      @yield('content')
+    </div>
+  
+
 
   <!--footer-->
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
     <div class="flex flex-col sm:flex-row items-start sm:items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2 border-black">
       <div class="mx-auto sm:mx-0">
-        <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-24 h-12 object-contain" />
+        <a href="{{ route('user.buku.index') }}">
+          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('storage/foto/Logo Auriga.png') }}" class="w-24 h-12 object-contain" />
+        </a>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:flex flex-wrap gap-x-6 sm:gap-x-4 md:gap-x-6 lg:gap-x-12 xl:gap-x-12 2xl:gap-x-16 gap-y-2 text-xs text-black px-4 sm:px-4 md:px-20 lg:px-22 xl:px-44 2xl:px-54 w-full justify-start mt-4 text-left">
-        
-      <p class="font-semibold">Hutan</p>
-        <p class="font-semibold">Kebun</p>
-        <p class="font-semibold">Tambang dan Energi</p>
-        <p class="font-semibold">Hukum</p>
-        <p class="font-semibold">Novel</p>
-        <p class="font-semibold">Lainnya</p>
+
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang dan Energi</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 4)}}">Hukum</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
+        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
       </div>
 
 
 
 
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 pb-1 text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[13px] text-black select-none">
-      COPYRIGHT © 2025 AURIGA NUSANTARA. ALL RIGHTS RESERVED.
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 pb-1 text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[9px] text-black select-none">
+      © 2025 AURIGA NUSANTARA. SELURUH HAK CIPTA DILINDUNGI UNDANG-UNDANG.
     </div>
     <div class="bg-[#1a3a05] text-white text-xs font-semibold flex justify-end px-6 sm:px-36 py-2">
     </div>

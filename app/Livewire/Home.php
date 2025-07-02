@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Livewire\User;
+namespace App\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
-class BukuIndex extends Component
+class Home extends Component
 {
-    public $kategoriBuku = [];
+        public $kategoriBuku = [];
     public $kategoriTerbuka = null;
 
     public $books = [];
@@ -73,11 +73,9 @@ class BukuIndex extends Component
     {
         return redirect()->to('/user/buku?search=' . urlencode($this->query));
     }
- 
     public function render()
     {
-        /* kirim $books juga ke blade */
-        return view('livewire.user.buku-index', [
+        return view('livewire.home', [
             'books' => $this->books,
         ]);
     }
