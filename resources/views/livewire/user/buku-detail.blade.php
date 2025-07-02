@@ -22,7 +22,7 @@
                 <div class="flex flex-col justify-between min-h-[397px] flex-1">
                     <!-- Bagian Atas: Judul & Ringkasan -->
                     <div>
-                        <p class="font-bold text-md pt-2 sm:pt-0 pr-12 lg:pr-20xl:pr-102 lg:mb-1 mb-2">
+                        <p class="font-bold text-md pt-2 sm:pt-0 pr-12 lg:pr-20 xl:pr-62 lg:mb-1 mb-2">
                             {{ $buku->nama_buku }}
                         </p>
 
@@ -56,7 +56,7 @@
                             <p class="text-xs">
                                 Penerbit : {{ $buku->penerbit ?? '-' }}
                             </p>
-                            <p class="text-xs text-gray-600">
+                            <p class="text-xs">
                                 Stok: {{ $buku->total_stok }}
                             </p>
 
