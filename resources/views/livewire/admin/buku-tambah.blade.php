@@ -8,7 +8,7 @@
 
         <h2 class="text-2xl font-bold mb-4">Form Pengisian Buku</h2>
 
-        {{-- Loading state --}} 
+        {{-- Loading state --}}
         <div wire:loading wire:target="store" class="text-blue-500 text-sm mb-2">
             Menyimpan data...
         </div>
@@ -75,17 +75,23 @@
             {{-- Foto Buku --}}
             <div>
                 <label class="block text-gray-700 font-bold mb-1" for="photoBuku">Foto Buku</label>
-                <input wire:model="foto_buku" type="file" id="photoBuku"
-                    @change="imagePreview = $event.target.files[0] ? URL.createObjectURL($event.target.files[0]) : ''"
-                    class="w-full px-3 py-2 border  -lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input
+                    wire:model="foto_buku"
+                    type="file"
+                    id="photoBuku"
+                    class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 @error('foto_buku') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
             </div>
 
-            {{-- Preview Foto --}}
-            <div x-show="imagePreview" class="mb-3">
-                <img :src="imagePreview" alt="Preview Buku"
-                    class="w-32 h-48 object-cover  -lg mx-auto shadow-md" />
+            {{-- Preview Livewire --}}
+            @if ($foto_buku)
+            <div class="mb-3 mt-3">
+                <img src="{{ $foto_buku->temporaryUrl() }}"
+                    alt="Preview Buku"
+                    class="w-32 h-48 object-cover rounded-lg mx-auto shadow-md" />
             </div>
+            @endif
+
 
 
             <div>
@@ -121,14 +127,14 @@
             </div>
 
             <div>
-    <label class="block text-sm text-gray-600 mb-1">Tampil di Halaman User</label>
-    <select wire:model="tampil"
-            class="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-indigo-200 focus:outline-none">
-        <option value="ya">Ya</option>
-        <option value="tidak">Tidak</option>
-    </select>
-    @error('tampil') <p class="text-sm text-red-500 mt-1">{{ $message }}</p> @enderror
-</div>
+                <label class="block text-sm text-gray-600 mb-1">Tampil di Halaman User</label>
+                <select wire:model="tampil"
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-indigo-200 focus:outline-none">
+                    <option value="ya">Ya</option>
+                    <option value="tidak">Tidak</option>
+                </select>
+                @error('tampil') <p class="text-sm text-red-500 mt-1">{{ $message }}</p> @enderror
+            </div>
 
             {{-- Tags --}}
             <div>

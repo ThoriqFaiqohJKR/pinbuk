@@ -3,9 +3,6 @@
     users: @entangle('users').defer,
     selectedUser: null,
     confirmDeleteOpen: false,
-     imagePreview: '',
-            dropdownGenreOpen: false,
-            dropdownLokasiOpen: false,
     deleteId: null
 }" x-cloak>
 
@@ -166,19 +163,26 @@
                     </div>
 
                     {{-- Foto --}}
-                    <div>
-                        <label class="block text-gray-700 font-bold mb-1">Foto Buku</label>
-                        <input wire:model="foto" type="file" id="photoBuku"
+                    <div class="md:col-span-2" x-data="{ imagePreview: '' }">
+                        <label class="block text-gray-700 font-medium mb-1">Foto</label>
+
+                        <input
+                            type="file"
+                            wire:model="foto"
+                            accept="image/*"
                             @change="imagePreview = $event.target.files[0] ? URL.createObjectURL($event.target.files[0]) : ''"
-                            class="w-full px-3 py-2 border  -lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            class="w-full border border-gray-300 rounded px-3 py-2" />
+
                         @error('foto') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+
+                        <!-- Preview langsung via Alpine -->
+                        <div x-show="imagePreview" class="mt-2">
+                            <img :src="imagePreview" class="w-24 h-24 object-cover rounded" />
+                        </div>
+
+                        
                     </div>
 
-                    {{-- Preview Foto --}}
-                    <div x-show="imagePreview" class="mb-3">
-                        <img :src="imagePreview" alt="Preview Buku"
-                            class="w-32 h-48 object-cover  -lg mx-auto shadow-md" />
-                    </div>
 
                     {{-- Tombol --}}
                     <div class="md:col-span-2 flex justify-end space-x-3 mt-4">
