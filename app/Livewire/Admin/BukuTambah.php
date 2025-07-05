@@ -5,7 +5,7 @@ namespace App\Livewire\Admin;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
+// use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Validation\Rule;
 
 class BukuTambah extends Component
@@ -58,7 +58,7 @@ class BukuTambah extends Component
             'position_foto' => ['required', Rule::in(['top', 'center', 'bottom'])],
             'tampil' => 'required|in:ya,tidak',
 
-            
+
         ]);
 
         $lastBook = DB::table('buku')->latest('id')->first();
@@ -71,7 +71,7 @@ class BukuTambah extends Component
             $fotoBukuPath = '/storage/' . $path;
         }
 
-        
+
 
         $bukuId = DB::table('buku')->insertGetId([
             'kode_uniq' => $kodeUniq,
@@ -83,22 +83,31 @@ class BukuTambah extends Component
             'foto_buku' => $fotoBukuPath,
             'position_foto' => $this->position_foto,
             'id_kategori_buku' => $this->kategori,
-            'stok' => 1,        
+            'stok' => 1,
             'tampil' => $this->tampil,
             'kondisi' => $this->kondisi,
             'catatan' => $this->catatan,
             'tags' => json_encode($this->tags),
             'created_at' => now(),
             'updated_at' => now(),
-        ]); 
+        ]);
 
+        require_once public_path('phpqrcode/qrlib.php');
         // Buat QR code
         $adminUrl = url('/admin/buku/' . $bukuId . '/detail');
-        $qrCodePath = 'public/qr_codes/buku/qr_' . $bukuId . '.png';
-        QrCode::format('png')->size(200)->generate($adminUrl, storage_path('app/' . $qrCodePath));
+        $qrRelPath = 'qr_codes/buku/qr_' . $bukuId . '.png';
+        $qrFullPath = storage_path('app/public/' . $qrRelPath);
+
+        if (!file_exists(dirname($qrFullPath))) {
+            mkdir(dirname($qrFullPath), 0755, true);
+        }
+
+
+        \QRcode::png($adminUrl, $qrFullPath, QR_ECLEVEL_L, 5, 2);
+
 
         DB::table('buku')->where('id', $bukuId)->update([
-            'qr_code' => '/storage/qr_codes/buku/qr_' . $bukuId . '.png'
+            'qr_code' => '/storage/' . $qrRelPath
         ]);
 
         session()->flash('message', 'Buku berhasil ditambahkan dengan kode unik: ' . $kodeUniq . '!');
