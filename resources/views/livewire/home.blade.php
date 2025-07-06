@@ -24,7 +24,7 @@
           </div>
 
           <!-- Teks -->
-          <div class="w-1/2 p-4 flex flex-col p-0 sm:p-7 my-4">
+          <div class="w-1/2 p-4 flex flex-col p-0 sm:p-7 mt-12">
 
             <h2 class="text-xs sm:text-lg font-bold mb-4">
               {{ $books[$currentIndex]->nama_buku }}
