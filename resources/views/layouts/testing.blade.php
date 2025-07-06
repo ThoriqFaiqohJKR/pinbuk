@@ -216,7 +216,7 @@
         <div
           x-show="showModal"
           class="fixed inset-0  flex items-center justify-center z-50">
-          <div class="bg-white p-6 shadow-md w-120 relative">
+          <div class="bg-white p-6 shadow-md w-240 relative">
             <button @click="showModal = false" class="absolute top-2 right-3 text-gray-600 hover:text-black">
               ✕
             </button>
