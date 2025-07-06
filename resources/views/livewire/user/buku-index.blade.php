@@ -6,25 +6,25 @@
 
     @if (count($books) > 0)
     <!-- Kotak 16:9 -->
-    <a href="{{ route('user.buku.detail', ['id' => $books[$currentIndex]->id]) }}" class="block">
-      <div class="relative w-full sm:w-[680px] aspect-[16/9] overflow-hidden shadow-lg border border-gray-300">
-        <div class="absolute inset-0 flex">
-          <!-- Gambar kiri -->
-          <div class="w-1/2 flex items-center justify-center bg-white">
-            <div class="w-[220px] aspect-[1/1.4142] overflow-hidden shadow ">
+      <a href="{{ route('user.buku.detail', ['id' => $books[$currentIndex]->id]) }}" class="block w-full max-w-[680px] mx-auto">
+        <div class="aspect-[16/9] bg-white shadow-lg border border-gray-300 flex overflow-hidden">
+
+          <!-- Gambar -->
+          <div class="w-1/2 flex items-center justify-center bg-gray-100">
+            <div class="w-[100px] sm:w-[220px] aspect-[1/1.4142] overflow-hidden shadow">
               <img src="{{ $books[$currentIndex]->foto_buku }}" alt="Judul Buku" class="w-full h-full object-cover">
             </div>
           </div>
 
-          <!-- Judul kanan -->
-          <div class="w-1/2 p-4 flex flex-col justify-top mr-8">
-            <h2 class="text-lg font-bold mt-3 ">{{ $books[$currentIndex]->nama_buku }}</h2>
-            <h2 class="text-[10px] mt-2 line-clamp-16">{{ $books[$currentIndex]->ringkasan }}</h2>
-          </div>
-        </div>
-      </div>
-    </a>
+          <!-- Teks -->
+          <div class="w-1/2 p-4 flex flex-col py-7">
 
+            <h2 class="text-sm sm:text-lg font-bold mb-2">{{ $books[$currentIndex]->nama_buku }}</h2>
+            <p class="text-[10px] sm:text-[12px] text-gray-700 line-clamp-5">{{ $books[$currentIndex]->ringkasan }}</p>
+          </div>
+
+        </div>
+      </a>
     <!-- Caption bawah -->
     <h3 class="font-semibold text-sm text-black mt-2 text-left w-full sm:w-[680px]">
       {{ $books[$currentIndex]->nama_buku }}
@@ -101,7 +101,7 @@
           class="overflow-x-auto scroll-smooth whitespace-nowrap flex gap-2 sm:gap-11 hide-scrollbar py-1">
 
           @if ($kategori->buku->isEmpty())
-          <div class="text-gray-500 text-sm px-4 py-6">
+          <div class="text-gray-500 text-sm px-4 py-6"> 
             Tidak ada buku yang tersedia.
           </div>
           @else
@@ -115,7 +115,7 @@
             @else
             <a
               href="{{ url('/user/buku/' . $buku->id . '/detail') }}"
-              class="border aspect-square w-48 flex-shrink-0 bg-white border-abu shadow-sm h-48 flex flex-col transform transition-transform duration-200 hover:scale-100 hover:shadow-md hover:border-green-500">
+              class="border aspect-square w-48 flex-shrink-0 bg-white border-abu shadow-sm h-48 flex flex-col transform transition-transform duration-200 hover:scale-100 hover:shadow-md hover:border-auriga hover:border-2">
               @endif
 
               <!-- Label Stok Habis -->
@@ -133,7 +133,7 @@
               <div class="flex-1 bg-gray-600 w-full flex items-center justify-center overflow-hidden">
 
                 <img src="{{ $buku->foto_buku ?? asset('images/placeholder.png') }}" alt="Buku"
-                  class="w-full h-full object-cover " />
+                  class="w-full h-full object-cover object-{{$buku->position_foto}} " />
               </div>
               <div class="object-center"></div>
               <div class="object-top"></div>

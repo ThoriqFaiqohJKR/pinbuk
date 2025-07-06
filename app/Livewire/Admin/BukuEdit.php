@@ -20,7 +20,7 @@ class BukuEdit extends Component
     public $newTag, $tags = [];
     public $tampil;
     public $fotoLama;
-    public $position_foto = 'center'; // Tambahan posisi foto
+    public $position_foto = 'center'; // Tambahan posisi foto 
 
     public function mount($id)
     {

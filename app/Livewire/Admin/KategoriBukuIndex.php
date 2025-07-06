@@ -10,6 +10,8 @@ class KategoriBukuIndex extends Component
     public $kategoriBuku;
     public $categoryName;
     public $showModal = false;
+    public $isEdit = false;
+    public $categoryId;
 
     public function mount()
     {
@@ -23,9 +25,10 @@ class KategoriBukuIndex extends Component
 
     public function openModal()
     {
+        $this->reset(['categoryName', 'categoryId', 'isEdit']);
         $this->showModal = true;
-        $this->categoryName = '';
     }
+
 
     public function closeModal()
     {
@@ -45,8 +48,39 @@ class KategoriBukuIndex extends Component
         $this->closeModal();
     }
 
+    public function editKategori($id)
+    {
+        $kategori = DB::table('kategori_buku')->find($id);
+
+        if ($kategori) {
+            $this->categoryId = $kategori->id;
+            $this->categoryName = $kategori->nama;
+            $this->isEdit = true;
+            $this->showModal = true;
+        }
+    }
+
+    public function updateKategori()
+    {
+        $this->validate([
+            'categoryName' => 'required|string|max:255',
+        ]);
+
+        $namaFormatted = ucwords(strtolower($this->categoryName));
+
+        DB::table('kategori_buku')->where('id', $this->categoryId)->update([
+            'nama' => $namaFormatted,
+        ]);
+
+        $this->refreshData();
+        $this->closeModal();
+    }
+
+
     public function render()
     {
-        return view('livewire.admin.kategori-buku-index');
+        return view('livewire.admin.kategori-buku-index', [
+            'kategoriBuku' => $this->kategoriBuku
+        ]);
     }
 }

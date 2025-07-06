@@ -4,10 +4,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class Home extends Component
 {
-        public $kategoriBuku = [];
+    public $kategoriBuku = [];
     public $kategoriTerbuka = null;
 
     public $books = [];
@@ -43,7 +44,10 @@ class Home extends Component
             ->select('id', 'foto_buku', 'nama_buku', 'ringkasan')
             ->take(3)
             ->get()
-            ->toArray();
+            ->map(function ($book) {
+                $book->ringkasan = Str::limit($book->ringkasan, 150, '...');
+                return $book;
+            });
     }
 
     public function nextSlide()

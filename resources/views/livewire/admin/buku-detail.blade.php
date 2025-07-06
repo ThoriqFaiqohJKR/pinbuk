@@ -40,68 +40,71 @@
                     <!-- Bagian Bawah: Info & Tombol -->
                     <div class="mt-4 space-y-1">
                         <!-- Info Buku -->
-                        <div class="text-sm opacity-90">
-                            <!-- grid 1 kolom (mobile) / 2 kolom (≥sm) -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-1">
+                        <div class="text-xs opacity-90">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
 
-                                {{-- Kolom kiri --}}
+                                <!-- Kolom Kiri -->
                                 <div class="space-y-1">
-                                    <div class="flex">
-                                        <div class="w-[110px]">Penulis</div>
-                                        <div class="mr-2">:</div>
-                                        <div>{{ $buku->penulis ?? '-' }}</div>
+                                    <div class="flex items-start">
+                                        <div class="min-w-[100px] pr-2 font-medium">Penulis</div>
+                                        <div class="pr-1">:</div>
+                                        <div class="flex-1 break-words whitespace-pre-wrap">{{ $buku->penulis ?? '-' }}</div>
                                     </div>
 
-                                    <div class="flex">
-                                        <div class="w-[110px]">Tahun&nbsp;Terbit</div>
-                                        <div class="mr-2">:</div>
-                                        <div>{{ $buku->terbit_tahun ?? '-' }}</div>
+                                    <div class="flex items-start">
+                                        <div class="min-w-[100px] pr-2 font-medium">Tahun Terbit</div>
+                                        <div class="pr-1">:</div>
+                                        <div class="flex-1">{{ $buku->terbit_tahun ?? '-' }}</div>
                                     </div>
 
-                                    <div class="flex">
-                                        <div class="w-[110px]">Penerbit</div>
-                                        <div class="mr-2">:</div>
-                                        <div>{{ $buku->penerbit ?? '-' }}</div>
+                                    <div class="flex items-start">
+                                        <div class="min-w-[100px] pr-2 font-medium">Penerbit</div>
+                                        <div class="pr-1">:</div>
+                                        <div class="flex-1 break-words whitespace-pre-wrap">{{ $buku->penerbit ?? '-' }}</div>
                                     </div>
 
-                                    <div class="flex">
-                                        <div class="w-[110px]">Stok</div>
-                                        <div class="mr-2">:</div>
-                                        <div>{{ $buku->stok ?? '-' }}</div>
+                                    <div class="flex items-start">
+                                        <div class="min-w-[100px] pr-2 font-medium">Stok</div>
+                                        <div class="pr-1">:</div>
+                                        <div class="flex-1">{{ $buku->stok ?? '-' }}</div>
                                     </div>
                                 </div>
 
-                                {{-- Kolom kanan --}}
+                                <!-- Kolom Kanan -->
                                 <div class="space-y-1 sm:pl-4">
-                                    <div class="flex">
-                                        <div class="w-[110px]">Kondisi</div>
-                                        <div class="mr-2">:</div>
-                                        <div>{{ $buku->kondisi ?? '-' }}</div>
+                                    <div class="flex items-start">
+                                        <div class="min-w-[100px] pr-2 font-medium">Kondisi</div>
+                                        <div class="pr-1">:</div>
+                                        <div class="flex-1">{{ $buku->kondisi ?? '-' }}</div>
                                     </div>
 
-                                    <div class="flex">
-                                        <div class="w-[110px]">Kategori</div>
-                                        <div class="mr-2">:</div>
-                                        <div>{{ $buku->kategori_nama ?? '-' }}</div>
+                                    <div class="flex items-start">
+                                        <div class="min-w-[100px] pr-2 font-medium">Kategori</div>
+                                        <div class="pr-1">:</div>
+                                        <div class="flex-1">{{ $buku->kategori_nama ?? '-' }}</div>
                                     </div>
 
-                                    <div class="flex">
-                                        <div class="w-[110px]">Tags</div>
-                                        <div class="mr-2">:</div>
-                                        <div>
-                                            <p>
-                                                @if(is_array($buku->tags))
-                                                {{ implode(', ', $buku->tags) }}
-                                                @else
-                                                {{ $buku->tags ?? '-' }}
-                                                @endif
-                                            </p>
+                                    <div class="flex items-start">
+                                        <div class="min-w-[100px] pr-2 font-medium">Tags</div>
+                                        <div class="pr-1">:</div>
+                                        <div class="flex-1">
+                                            @if(is_array($buku->tags))
+                                            {{ implode(', ', $buku->tags) }}
+                                            @else
+                                            {{ $buku->tags ?? '-' }}
+                                            @endif
                                         </div>
                                     </div>
-                                </div>
 
+                                    <div class="flex items-start">
+                                        <div class="min-w-[100px] pr-2 font-medium">Stok</div>
+                                        <div class="pr-1">:</div>
+                                        <div class="flex-1">{{ $buku->stok ?? '-' }}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
 
 
 
@@ -159,8 +162,8 @@
     </div>
 
     {{-- Buku Sedang Dipinjam --}}
-    <div class="max-w-5xl mx-auto mt-10 bg-white shadow-md rounded-md p-6">
-        <h3 class="text-xl font-semibold text-indigo-800 mb-4">Buku Ini Sedang Dipinjam</h3>
+    <div class="max-w-5xl mx-auto mt-10 bg-white shadow-md rounded-md p-6 border mb-10">
+        <h3 class="text-xl font-semibold text-gray-500 mb-4">Sedang Dipinjam</h3>
 
         @if(count($peminjamanAktif) > 0)
         <ul class="space-y-4">
@@ -182,7 +185,7 @@
             @endforeach
         </ul>
         @else
-        <p class="text-gray-500 italic">Belum ada peminjaman aktif untuk buku ini.</p>
+        <p class="text-red-500 italic">Belum ada peminjaman aktif untuk buku ini.</p>
         @endif
     </div>
 

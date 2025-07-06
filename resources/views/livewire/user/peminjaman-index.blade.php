@@ -29,12 +29,13 @@
 
             </div>
 
-            <div class="flex items-center space-x-2 text-gray-900 font-semibold text-[14px]">
+            {{--<div class="flex items-center space-x-2 text-gray-900 font-semibold text-[14px]">
                 <i class="fas {{ strpos($item->kode_uniq, 'B') === 0 ? 'fa-book text-green-700' : 'fa-cogs text-blue-700' }}"></i>
                 <span>{{ strpos($item->kode_uniq, 'B') === 0 ? 'Buku' : 'Aset' }}</span>
-            </div>
+            </div>-}}
 
 
+            {{-- 
             <div class="flex justify-between items-center flex-wrap">
                 <div class="flex items-center space-x-3 flex-1 min-w-0">
                     <img
@@ -61,12 +62,13 @@
 
 
             </div>
+             --}}
 
-            <div class="flex justify-end items-center space-x-3">
+            {{-- <div class="flex justify-end items-center space-x-3">
                 <button class="text-green-700 font-semibold text-[13px] hover:underline" type="button">
                     Lihat Detail Transaksi
                 </button>
-            </div>
+            </div> --}}
 
             {{-- Status Timeline --}}
             @php

@@ -55,12 +55,12 @@
           @click.prevent="showModal = !showModal">
           Kategori
         </label>
-      </div>
+      </div> 
 
       <!-- Kanan: Input + User Info -->
       <div class="flex items-center justify-between w-full relative">
         <!-- Input -->
-        <div class="flex-1 min-w-0 border border-black text-sm   focus:outline-none focus:ring-1 focus:ring-green-700 mr-4 sm:mr-6 md:mr-10 lg:mr-29 xl:mr-41">
+        <div class="flex-1 min-w-0 border border-black text-sm  focus:outline-none focus:ring-1 focus:ring-green-700 mr-4 sm:mr-6 md:mr-10 lg:mr-29 xl:mr-34">
           @livewire('user.search-navbar')
         </div>
 
@@ -136,23 +136,25 @@
       <header
 
         class="hidden lg:flex justify-center -translate-y-6">
-        <nav class="flex justify-center lg:gap-[1.6rem] 2xl:gap-[2.4rem] text-[13px] text-black w-full">
+        <nav class="flex justify-center lg:gap-[1.6rem] 2xl:gap-[1.8rem] text-[13px] text-black w-full">
           <a class="hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
           <a class="hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
-          <a class="hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang dan Energi</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang & Energi</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 7)}}">Laut</a>
           <a class="hover:underline" href="{{ route('user.buku.katalog', 4)}}">Hukum</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 8)}}">Keuangan</a>
           <a class="hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
           <a class="hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
         </nav>
       </header>
     </div>
 
-    <div class="border-b border-red-500 -mt-3"></div>
+    <div class="border-b border-red-500 -mt-2 sm:-mt-3 md:-mt-1"></div>
   </div>
 
   <!-- Modal -->
   <div
-    x-show="showModal"
+    x-show="showModal" 
     x-transition
     x-cloak
     @click.self="showModal = false"
@@ -160,12 +162,15 @@
     <div class="bg-white border border-gray-300 shadow-lg w-full 
               px-4 sm:px-6 md:p-8 lg:p-6 xl:p-6">
       <div class="flex flex-col space-y-6">
-        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hukum</a>
-        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 2)}}">Hutan</a>
-        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 3)}}">Kebun</a>
-        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 4)}}">Tambang dan Energi</a>
-        <p class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
-          <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
+        
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang dan Energi</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 7)}}">Laut</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 4)}}">Hukum</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 8)}}">Keuangan</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
       </div>
     </div>
   </div>
@@ -183,31 +188,63 @@
 
   <!--footer-->
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
-    <div class="flex flex-col sm:flex-row items-start sm:items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2 border-black">
-      <div class="mx-auto sm:mx-0">
+    <div class="w-full border-b-2 border-black sm:px-6 md:px-10 lg:px-20 xl:px-40 py-6 flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-4">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
         <a href="{{ route('user.buku.index') }}">
-          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('foto/Logo Auriga.png') }}" class="w-24 h-12 object-contain" />
+          <img alt="Logo Auriga" src="{{ asset('foto/Logo Auriga.png') }}" class="w-28 sm:w-24 h-auto object-contain" />
         </a>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:flex flex-wrap gap-x-6 sm:gap-x-4 md:gap-x-6 lg:gap-x-12 xl:gap-x-12 2xl:gap-x-16 gap-y-2 text-xs text-black px-4 sm:px-4 md:px-20 lg:px-22 xl:px-44 2xl:px-54 w-full justify-start mt-4 text-left">
 
-        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
-        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
-        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang dan Energi</a>
-        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 4)}}">Hukum</a>
-        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
-        <a class="font-semibold hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
+      <!-- Paragraf Tengah -->
+      <div class="flex-1 text-[13px] sm:text-[14px] text-black text-left px-30">
+        <p class="leading-snug sm:leading-normal font-semibold">
+          Diisi dengan tag line Acepellu pturiae molut volora volent, et fuga. Ita earum, tem cullit, nus et, solupta estrum, con corectia cor sequiaspedi alit asincia pliae exero doluptaerume pos aut libus am reres...
+        </p>
       </div>
 
+      <!-- Tombol Donasi -->
+      <div x-data="{ showModal: false }">
 
+        <!-- Tombol -->
+        <div class="flex-shrink-0 mr-6">
+          <button @click="showModal = true"
+            class="bg-[#1a3a05] hover:bg-green-900 text-white text-xs font-semibold px-8 py-2">
+            Donasi Buku:
+          </button>
+        </div>
 
+        <!-- Modal -->
+        <div x-show="showModal"
+          class="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50"
+          x-transition>
+          <div class="bg-white w-full max-w-md  shadow-lg p-6 relative"  @click.outside="showModal = false">
+            <h2 class="text-lg font-bold mb-4">Form Donasi Buku</h2>
+
+            <!-- Isi Form di sini -->
+            <form>
+              <input type="text" placeholder="Judul Buku" class="w-full mb-3 border p-2  " />
+              <textarea placeholder="Catatan" class="w-full border p-2   mb-3"></textarea>
+              <button type="submit" class="bg-green-700 text-white px-4 py-2  ">Kirim</button>
+            </form>
+
+            <!-- Tombol Tutup -->
+            <button @click="showModal = false"
+              class="absolute top-2 right-3 text-gray-700 hover:text-red-500 text-xl">&times;</button>
+          </div>
+        </div>
+
+      </div>
 
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 pb-1 text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[9px] text-black select-none py-2">
-      © 2025 AURIGA NUSANTARA. SELURUH HAK CIPTA DILINDUNGI UNDANG-UNDANG.
+
+    <!-- Hak Cipta -->
+    <div class="text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[9px] text-black py-2 select-none">
+      © 2025 <a href="https://auriga.or.id" class="hover:text-auriga font-semibold">AURIGA NUSANTARA</a>. SELURUH HAK CIPTA DILINDUNGI UNDANG-UNDANG.
     </div>
-    <div class="bg-[#1a3a05] text-white text-xs font-semibold flex justify-end px-6 sm:px-36 py-2">
-    </div>
+
+    <!-- Bar Hijau Bawah -->
+    <div class="bg-[#1a3a05] h-4"></div>
   </footer>
   @livewireScripts
 </body>

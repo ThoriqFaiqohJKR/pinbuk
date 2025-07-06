@@ -4,6 +4,7 @@ namespace App\Livewire\User;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class BukuIndex extends Component
 {
@@ -43,7 +44,10 @@ class BukuIndex extends Component
             ->select('id', 'foto_buku', 'nama_buku', 'ringkasan')
             ->take(3)
             ->get()
-            ->toArray();
+            ->map(function ($book) {
+                $book->ringkasan = Str::limit($book->ringkasan, 150, '...');
+                return $book;
+            });
     }
 
     public function nextSlide()
@@ -73,7 +77,7 @@ class BukuIndex extends Component
     {
         return redirect()->to('/user/buku?search=' . urlencode($this->query));
     }
- 
+
     public function render()
     {
         /* kirim $books juga ke blade */

@@ -24,7 +24,7 @@ class UserIndex extends Component
     public $showEditModal = false;
 
     public $foto;
-
+    public $foto_lama;
 
 
 
@@ -118,6 +118,7 @@ class UserIndex extends Component
 
     public function edit($id)
     {
+
         $this->reset(['showAddModal']); // pastikan modal tambah dimatiin
         $this->showEditModal = true;
         $user = DB::table('pengguna')->find($id);
@@ -133,6 +134,7 @@ class UserIndex extends Component
             // Reset password fields
             $this->password = '';
             $this->password_confirmation = '';
+            $this->foto_lama = $user->foto;
 
             // Tentukan apakah admin atau bukan
             if ($user->level === 'admin') {
@@ -157,6 +159,7 @@ class UserIndex extends Component
             'nip' => $this->isAdmin ? 'nullable' : 'nullable|string|max:30',
             'jabatan' => $this->isAdmin ? 'nullable' : 'required|string',
             'status' => $this->isAdmin ? 'nullable' : 'required|in:green,yellow,red,black',
+            'foto' => 'nullable|image|max:1024',
         ]);
 
         $data = [
@@ -170,6 +173,14 @@ class UserIndex extends Component
             $data['nip'] = $this->nip;
             $data['jabatan'] = $this->jabatan;
             $data['status'] = $this->status;
+        }
+
+        if ($this->foto) {
+            $path = $this->foto->store('images/user', 'public');
+            $data['foto'] = '/storage/' . $path;
+        } else {
+            // ✅ Jika tidak upload foto baru, gunakan foto lama
+            $data['foto'] = $this->foto_lama;
         }
 
         // Jika isi password baru, simpan
@@ -202,65 +213,65 @@ class UserIndex extends Component
 
 
 
- public function save()
-{
-    // Validasi umum
-    $this->validate([
-        'nama' => 'required|string|max:255',
-        'email' => 'required|email|unique:pengguna,email',
-        'no_tlpn' => 'nullable|string|max:20',
-        'password' => 'required|string|min:6|confirmed',
-        'foto' => 'nullable|image|max:1024',
-        'jabatan' => $this->isAdmin ? 'nullable' : 'required|string|max:100',
-        'status' => $this->isAdmin ? 'nullable' : 'required|in:green,yellow,red,black',
-        'nip' => $this->isAdmin ? 'nullable' : 'required|string|max:50|unique:pengguna,nip',
-    ]);
+    public function save()
+    {
+        // Validasi umum
+        $this->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|unique:pengguna,email',
+            'no_tlpn' => 'nullable|string|max:20',
+            'password' => 'required|string|min:6|confirmed',
+            'foto' => 'nullable|image|max:1024',
+            'jabatan' => $this->isAdmin ? 'nullable' : 'required|string|max:100',
+            'status' => $this->isAdmin ? 'nullable' : 'required|in:green,yellow,red,black',
+            'nip' => $this->isAdmin ? 'nullable' : 'required|string|max:50|unique:pengguna,nip',
+        ]);
 
-    $fotoPath = null;
-    if ($this->foto) {
-        $path = $this->foto->store('images/user', 'public');
-        $fotoPath = '/storage/' . $path;
+        $fotoPath = null;
+        if ($this->foto) {
+            $path = $this->foto->store('images/user', 'public');
+            $fotoPath = '/storage/' . $path;
+        }
+
+        // Hitung jumlah admin yang sudah ada
+        $nipAdmin = null;
+        if ($this->isAdmin) {
+            $nipAdmin = DB::table('pengguna')
+                ->where('level', 'admin')
+                ->count() + 1; // auto increment
+        }
+
+        DB::table('pengguna')->insert([
+            'nip' => $this->isAdmin ? (string) $nipAdmin : $this->nip,
+            'nama' => $this->nama,
+            'email' => $this->email,
+            'no_tlpn' => $this->no_tlpn,
+            'foto' => $fotoPath,
+            'level' => $this->level,
+            'jabatan' => $this->isAdmin ? 'Admin' : $this->jabatan,
+            'password' => Hash::make($this->password),
+            'password_plaintext' => $this->password,
+            'status' => $this->isAdmin ? 'green' : $this->status,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // ✅ Reset form
+        $this->reset([
+            'nip',
+            'nama',
+            'email',
+            'no_tlpn',
+            'foto',
+            'jabatan',
+            'password',
+            'password_confirmation',
+            'status'
+        ]);
+
+        $this->showAddModal = false;
+        session()->flash('message', 'User berhasil ditambahkan.');
     }
-
-    // Hitung jumlah admin yang sudah ada
-    $nipAdmin = null;
-    if ($this->isAdmin) {
-        $nipAdmin = DB::table('pengguna')
-            ->where('level', 'admin')
-            ->count() + 1; // auto increment
-    }
-
-    DB::table('pengguna')->insert([
-        'nip' => $this->isAdmin ? (string) $nipAdmin : $this->nip,
-        'nama' => $this->nama,
-        'email' => $this->email,
-        'no_tlpn' => $this->no_tlpn,
-        'foto' => $fotoPath,
-        'level' => $this->level,
-        'jabatan' => $this->isAdmin ? 'Admin' : $this->jabatan,
-        'password' => Hash::make($this->password),
-        'password_plaintext' => $this->password,
-        'status' => $this->isAdmin ? 'green' : $this->status,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
- 
-    // ✅ Reset form
-    $this->reset([
-        'nip',
-        'nama',
-        'email',
-        'no_tlpn',
-        'foto',
-        'jabatan',
-        'password',
-        'password_confirmation',
-        'status'
-    ]);
-
-    $this->showAddModal = false;
-    session()->flash('message', 'User berhasil ditambahkan.');
-}
 
     public function resetInput()
     {

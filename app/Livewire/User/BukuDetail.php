@@ -87,6 +87,17 @@ class BukuDetail extends Component
     // =====================================================================
     public function pinjamBuku()
     {
+        // Hitung total pinjaman aktif user (request, dipinjam, silahkan diambil)
+        $jumlahPinjaman = DB::table('peminjaman')
+            ->where('user_id', $this->user_id)
+            ->whereIn('status', ['request', 'Dipinjam', 'Silahkan Diambil'])
+            ->count();
+
+        if ($jumlahPinjaman >= 3) {
+            session()->flash('error', 'Anda hanya bisa meminjam maksimal 3 buku dalam satu waktu.');
+            return;
+        }
+
         // Cek dobel pinjam
         $masihDipinjam = DB::table('peminjaman')
             ->where('user_id', $this->user_id)
@@ -99,7 +110,7 @@ class BukuDetail extends Component
             return;
         }
 
-        // Cek stok masih tersedia
+        // Cek stok
         $buku = DB::table('buku')
             ->where('kode_uniq', $this->buku->kode_uniq)
             ->first();
@@ -134,6 +145,7 @@ class BukuDetail extends Component
 
         return redirect('/user/peminjaman');
     }
+
 
 
     // =====================================================================

@@ -5,7 +5,7 @@
         <div class="flex flex-col items-start px-6 sm:px-10 md:px-20 lg:px-22 xl:px-42 py-4 mt-10">
             <div class="w-full">
                 <p class="font-bold text-xs mb-1">
-                    Hutan
+                    {{$buku->nama_kategori}}
                 </p>
 
             </div>
@@ -46,21 +46,32 @@
 
                     <!-- Bagian Bawah: Info & Tombol -->
                     <div class="mt-4 space-y-1">
-                        <div class="opacity-90">
-                            <p class="text-[12px]">
-                                Penulis : {{ $buku->penulis ?? '-' }}
-                            </p>
-                            <p class="text-xs">
-                                Tahun Terbit : {{ $buku->terbit_tahun ?? '-' }}
-                            </p>
-                            <p class="text-xs">
-                                Penerbit : {{ $buku->penerbit ?? '-' }}
-                            </p>
-                            <p class="text-xs">
-                                Stok: {{ $buku->total_stok }}
-                            </p>
+                        <div class="text-xs opacity-90 space-y-1">
+                            <div class="flex items-start">
+                                <div class="min-w-[100px] pr-2 font-medium">Penulis</div>
+                                <div class="pr-1">:</div>
+                                <div class="flex-1">{{ $buku->penulis ?? '-' }}</div>
+                            </div>
 
+                            <div class="flex items-start">
+                                <div class="min-w-[100px] pr-2 font-medium">Tahun Terbit</div>
+                                <div class="pr-1">:</div>
+                                <div class="flex-1">{{ $buku->terbit_tahun ?? '-' }}</div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="min-w-[100px] pr-2 font-medium">Penerbit</div>
+                                <div class="pr-1">:</div>
+                                <div class="flex-1">{{ $buku->penerbit ?? '-' }}</div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="min-w-[100px] pr-2 font-medium">Stok</div>
+                                <div class="pr-1">:</div>
+                                <div class="flex-1">{{ $buku->total_stok }}</div>
+                            </div>
                         </div>
+
 
                         <button class="mt-2 bg-gray-300 font-bold text-sm px-[0.6rem] py-[0.4rem] w-max"
                             @click="showTerms = true"
@@ -104,13 +115,17 @@
             <!-- Modal -->
             <div
                 x-show="showTerms"
-                class="fixed inset-0 flex items-center justify-center mt-42 z-[999999999] 
-px-4 sm:px-6 md:px-8 lg:pl-88 lg:pr-[21.9rem]"
+                class="fixed inset-0 flex items-center justify-center mt-22 z-[999999999] px-4 sm:px-6 md:px-8 lg:pl-88 lg:pr-[21.9rem]"
                 x-cloak>
 
 
                 <div class="bg-white border px-9 py-6 w-full max-h-[90vh] overflow-y-auto  relative"
                     @click.away="showTerms = false">
+                    @if (session('error'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 text-sm mb-4">
+                        {{ session('error') }}
+                    </div>
+                    @endif
                     <h3 class="font-semibold text-md mb-4">Syarat Ketentuan</h3>
 
                     <p class="sm:text-[10px] text-[9px] leading-tight mb-3">

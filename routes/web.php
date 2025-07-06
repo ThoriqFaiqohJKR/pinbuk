@@ -38,7 +38,7 @@ Route::prefix('admin')->name('admin.')->middleware([UserAccess::class . ':admin'
         Route::get('{id}/edit', [BukuController::class, 'edit'])->name('edit');
         Route::put('{id}', [BukuController::class, 'update'])->name('update');
         Route::delete('{id}', [BukuController::class, 'destroy'])->name('destroy');
-        Route::get('/{id}/pinjam', [BukuController::class, 'pinjam'])->name('pinjam');
+        Route::get('/{id}/pinjam', [BukuController::class, 'pinjam'])->name('pinjam'); 
         Route::get('/kategori', [BukuController::class, 'kategori'])->name('index');
         Route::get('/kategori-buku', [BukuController::class, 'katebuku'])->name('katebuku');
         Route::get('/kategori-buku/{id}', [BukuController::class, 'katedetail'])->name('katedetail');

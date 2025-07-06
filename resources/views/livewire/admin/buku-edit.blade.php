@@ -19,6 +19,33 @@
                     class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 @error('nama_buku') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
             </div>
+            <!-- Penulis -->
+            <div>
+                <label class="block text-gray-700 font-bold mb-1" for="penulis">Penulis</label>
+                <input wire:model="penulis" id="penulis" type="text"
+                    placeholder="Nama penulis"
+                    class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                @error('penulis') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            </div>
+
+            <!-- Tahun Terbit -->
+            <div>
+                <label class="block text-gray-700 font-bold mb-1" for="tahunTerbit">Tahun Terbit</label>
+                <input wire:model="terbit_tahun" id="tahunTerbit" type="number" min="0"
+                    placeholder="Contoh 2024"
+                    class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                @error('terbit_tahun') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            </div>
+
+            <!-- Penerbit -->
+            <div>
+                <label class="block text-gray-700 font-bold mb-1" for="penerbit">Penerbit</label>
+                <input wire:model="penerbit" id="penerbit" type="text"
+                    placeholder="Nama penerbit"
+                    class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                @error('penerbit') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            </div>
+
 
             <!-- Ringkasan -->
             <div>

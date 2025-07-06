@@ -6,16 +6,24 @@
     deleteId: null
 }" x-cloak>
 
-    <div class="w-full max-w-[75vw] bg-white rounded-lg shadow-md p-6 mx-auto mt-8">
-        <a wire:click="showAddForm" class="bg-blue-500 text-white px-4 py-2 mr-2 cursor-pointer">
-            tambah user
-        </a>
-        <a wire:click="showAddAdminForm"
-            class="bg-purple-600 text-white px-4 py-2 mr-2 cursor-pointer">Tambah Admin</a>
+    <div class="w-full max-w-[75vw] bg-white border shadow-md p-6 mx-auto my-8">
+        <div class="flex flex-wrap gap-2 sm:gap-3 mb-4">
+            <a wire:click="showAddForm"
+                class="bg-blue-500 text-white min-w-[120px] h-10 text-sm sm:text-base rounded hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-center">
+                Tambah User
+            </a>
 
-        <a wire:click="exportCsv" class="bg-green-500 text-white px-3 py-1.5  hover:bg-green-600 cursor-pointer">
-            <i class="fas fa-print mr-1"></i> Print
-        </a>
+            <a wire:click="showAddAdminForm"
+                class="bg-purple-600 text-white min-w-[120px] h-10 text-sm sm:text-base rounded hover:bg-purple-700 transition cursor-pointer flex items-center justify-center text-center">
+                Tambah Admin
+            </a>
+
+            <a wire:click="exportCsv"
+                class="bg-green-500 text-white min-w-[120px] h-10 text-sm sm:text-base rounded hover:bg-green-600 transition cursor-pointer flex items-center justify-center text-center">
+                <i class="fas fa-print"></i> Print
+            </a>
+        </div>
+
         <h1 class="text-2xl font-semibold mb-6 text-gray-800 text-center">Daftar User</h1>
 
         <div class="space-y-4">
@@ -177,10 +185,10 @@
 
                         <!-- Preview langsung via Alpine -->
                         <div x-show="imagePreview" class="mt-2">
-                            <img :src="imagePreview" class="w-24 h-24 object-cover rounded" />
+                            <img :src="imagePreview" class="w-24 h-24 object-cover rounded-full" />
                         </div>
 
-                        
+
                     </div>
 
 
@@ -211,6 +219,23 @@
                 </h2>
 
                 <form wire:submit.prevent="update">
+                    {{-- Foto --}}
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-medium mb-1">Foto Profil</label>
+
+                        {{-- Preview foto baru bila dipilih --}}
+                        @if ($foto)
+                        <img src="{{ $foto->temporaryUrl() }}" class="w-24 h-24 object-cover rounded-full mb-2" alt="Preview Foto Baru">
+                        @elseif ($foto_lama)
+                        {{-- Preview foto lama --}}
+                        <img src="{{ asset( $foto_lama) }}" class="w-24 h-24 object-cover rounded-full mb-2" alt="Foto Lama">
+                        @endif
+
+                        <input type="file" wire:model="foto"
+                            class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+               file:rounded file:border-0 file:text-sm file:font-semibold
+               file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                    </div>
 
                     {{-- Nama --}}
                     <div class="mb-4">
