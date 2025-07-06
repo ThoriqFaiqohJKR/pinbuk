@@ -140,11 +140,11 @@
           <a class="hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
           <a class="hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
           <a class="hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang & Energi</a>
-          <a class="hover:underline" href="{{ route('user.buku.katalog', 7)}}">Laut</a>
-          <a class="hover:underline" href="{{ route('user.buku.katalog', 4)}}">Hukum</a>
-          <a class="hover:underline" href="{{ route('user.buku.katalog', 8)}}">Keuangan</a>
-          <a class="hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
-          <a class="hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 4)}}">Laut</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 5)}}">Hukum</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 6)}}">Keuangan</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 7)}}">Novel</a>
+          <a class="hover:underline" href="{{ route('user.buku.katalog', 8)}}">Lainnya</a>
         </nav>
       </header>
     </div>
@@ -166,11 +166,11 @@
         <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
         <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
         <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang dan Energi</a>
-        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 7)}}">Laut</a>
-        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 4)}}">Hukum</a>
-        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 8)}}">Keuangan</a>
-        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 5)}}">Novel</a>
-        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 6)}}">Lainnya</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 4)}}">Laut</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 5)}}">Hukum</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 6)}}">Keuangan</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 7)}}">Novel</a>
+        <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 8)}}">Lainnya</a>
       </div>
     </div>
   </div>
@@ -191,7 +191,7 @@
     <div class="flex flex-col sm:flex-row items-start sm:items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2 border-black">
       <div class="mx-auto sm:mx-0">
         <img
-          src="image/Logo Auriga.png"
+          src="{{asset('foto/Logo Auriga.png') }}"
           alt="Auriga Nusantara logo"
           class="w-24 h-12 object-contain" />
       </div>
@@ -202,6 +202,13 @@
         <p class="font-semibold">Hukum</p>
         <p class="font-semibold">Novel</p>
         <p class="font-semibold">Lainnya</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:flex flex-wrap gap-x-6 md:gap-x-12 lg:gap-x-12 xl:gap-x-16 gap-y-2 text-xs text-black px-4 sm:px-8 md:px-12 lg:px-22 xl:px-48 w-full justify-start mt-4 text-left">
+        <a>
+          <button class="bg-[#1a3a05] text-white px-6 py-2   hover:bg-green-700 transition duration-300 text-xs">
+            Donasi Buku
+          </button>
+        </a>
       </div>
 
 
