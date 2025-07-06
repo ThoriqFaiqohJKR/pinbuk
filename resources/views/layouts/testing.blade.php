@@ -188,36 +188,42 @@
 
   <!--footer-->
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
-    <div class="flex sm:flex-row items-start  px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2">
-      <div class="w-16 h-12 sm:w-20 sm:h-14 lg:w-24 lg:h-16 flex items-center justify-center">
+    <div class="flex flex-col items-center sm:flex-row sm:items-start justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2 gap-4">
+
+
+      <!-- Logo -->
+      <div class="w-16 h-12 sm:w-20 sm:h-14 lg:w-24 lg:h-16">
         <a href="{{ route('user.buku.index') }}">
-          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
+          <img src="{{ asset('foto/Logo Auriga.png') }}" alt="Logo Auriga" class="w-full h-full object-contain" />
         </a>
-
       </div>
-      <div class="text-sm text-center sm:text-left sm:flex-1 sm:px-42">
-        <p class="font-semibold">Hutan</p>
 
+      <!-- Teks Tengah -->
+      <div class="text-sm text-center sm:text-left sm:flex-1 px-4 lg:px-32">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore commodi amet mollitia sapiente, tempora ex dignissimos, ea, nihil at eveniet ipsum debitis accusamus provident unde magnam laboriosam illum perferendis repudiandae!
       </div>
+
+      <!-- Tombol -->
       <div>
-        <a>
-          <button class="bg-[#1a3a05] text-white px-6 py-2   hover:bg-green-700 transition duration-300 text-xs">
+        <a href="#">
+          <button class="bg-[#1a3a05] text-white px-6 py-2 hover:bg-green-700 transition duration-300 text-xs mr-4">
             Donasi Buku
           </button>
         </a>
       </div>
-
-
-
-
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 pb-1 text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[13px] text-black select-none">
+
+    <!-- Copyright -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 pb-1 text-center text-[11px] sm:text-[12px] text-black select-none">
       COPYRIGHT © 2025 AURIGA NUSANTARA. ALL RIGHTS RESERVED.
     </div>
 
     <div class="bg-[#1a3a05] text-white text-xs font-semibold flex justify-end px-6 sm:px-36 py-2">
+      <!-- Kosong atau tambahkan info lain -->
     </div>
   </footer>
+
+
   @livewireScripts
 </body>
 
