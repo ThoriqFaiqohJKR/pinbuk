@@ -14,7 +14,8 @@
 
           <!-- Gambar -->
           <div class="w-1/2 flex items-center justify-center bg-gray-100 p-8">
-            <div class="w-[100px] sm:w-[220px] aspect-[1/1.4142]  overflow-hidden ">
+            <div class="w-2/3 sm:w-[220px] aspect-[1/1.4142] ...">
+
               <img src="{{ $books[$currentIndex]->foto_buku }}"
                 alt="Judul Buku"
                 class="w-full h-full object-contain " />
