@@ -188,8 +188,8 @@
 
   <!--footer-->
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
-    <div class="flex  sm:flex-row items-start sm:items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2">
-        <div class="sm:w-auto w-full flex justify-center sm:justify-start">
+    <div class="flex sm:flex-row items-start sm:items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2">
+        <div class="w-full flex justify-center sm:justify-start">
         <img
           src="{{asset('foto/Logo Auriga.png') }}"
           alt="Auriga Nusantara logo"
