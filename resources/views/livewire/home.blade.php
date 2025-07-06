@@ -13,10 +13,13 @@
         <div class="aspect-[16/9] bg-white shadow-lg border border-gray-300 flex overflow-hidden">
 
           <!-- Gambar -->
-          <div class="w-1/2 flex items-center justify-center bg-gray-100">
-            <div class="w-[100px] sm:w-[220px] aspect-[1/1.4142] overflow-hidden shadow">
-              <img src="{{ $books[$currentIndex]->foto_buku }}" alt="Judul Buku" class="w-full h-full object-cover">
+          <div class="w-1/2 flex items-center justify-center bg-gray-100 p-8">
+            <div class="w-[100px] sm:w-[220px] aspect-[1/1.4142]  overflow-hidden ">
+              <img src="{{ $books[$currentIndex]->foto_buku }}"
+                alt="Judul Buku"
+                class="w-full h-full object-contain " />
             </div>
+
           </div>
 
           <!-- Teks -->
