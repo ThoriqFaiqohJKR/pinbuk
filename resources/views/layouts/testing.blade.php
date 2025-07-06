@@ -189,17 +189,16 @@
   <!--footer-->
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
     <div class="flex sm:flex-row items-start  px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2">
-        <div class="w-full flex justify-center sm:justify-start">
-        <img
-          src="{{asset('foto/Logo Auriga.png') }}"
-          alt="Auriga Nusantara logo"
-          class="w-24 h-12 object-contain" />
+      <div class="w-full flex justify-center sm:justify-start">
+        <a href="{{ route('user.buku.index') }}">
+          <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
+        </a>
       </div>
-        <div class="text-sm text-center sm:text-left sm:flex-1 sm:px-42">
+      <div class="text-sm text-center sm:text-left sm:flex-1 sm:px-42">
         <p class="font-semibold">Hutan</p>
-        
+
       </div>
-      <div >
+      <div>
         <a>
           <button class="bg-[#1a3a05] text-white px-6 py-2   hover:bg-green-700 transition duration-300 text-xs">
             Donasi Buku
