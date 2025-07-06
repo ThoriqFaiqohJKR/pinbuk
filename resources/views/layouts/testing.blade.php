@@ -55,7 +55,7 @@
           @click.prevent="showModal = !showModal">
           Kategori
         </label>
-      </div> 
+      </div>
 
       <!-- Kanan: Input + User Info -->
       <div class="flex items-center justify-between w-full relative">
@@ -154,7 +154,7 @@
 
   <!-- Modal -->
   <div
-    x-show="showModal" 
+    x-show="showModal"
     x-transition
     x-cloak
     @click.self="showModal = false"
@@ -162,7 +162,7 @@
     <div class="bg-white border border-gray-300 shadow-lg w-full 
               px-4 sm:px-6 md:p-8 lg:p-6 xl:p-6">
       <div class="flex flex-col space-y-6">
-        
+
         <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 1)}}">Hutan</a>
         <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 2)}}">Kebun</a>
         <a class="font-bold text-sm leading-tight hover:underline" href="{{ route('user.buku.katalog', 3)}}">Tambang dan Energi</a>
@@ -188,63 +188,73 @@
 
   <!--footer-->
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
-    <div class="w-full border-b-2 border-black sm:px-6 md:px-10 lg:px-20 xl:px-40 py-6 flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-4">
-      <!-- Logo -->
-      <div class="flex-shrink-0">
+    <div class="flex flex-col sm:flex-row mt-2 justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-40 py-4 border-b-2 border-black space-y-4 sm:space-y-0">
+
+      <!-- Logo kiri -->
+      <div class="sm:w-auto w-full flex justify-center sm:justify-start">
         <a href="{{ route('user.buku.index') }}">
-          <img alt="Logo Auriga" src="{{ asset('foto/Logo Auriga.png') }}" class="w-28 sm:w-24 h-auto object-contain" />
+          <img alt="Logo Auriga" src="{{asset('foto/Logo Auriga.png') }}" class="w-28 sm:w-24 h-auto object-contain" />
         </a>
       </div>
 
-      <!-- Paragraf Tengah -->
-      <div class="flex-1 text-[13px] sm:text-[14px] text-black text-left px-30">
-        <p class="leading-snug sm:leading-normal font-semibold">
-          Diisi dengan tag line Acepellu pturiae molut volora volent, et fuga. Ita earum, tem cullit, nus et, solupta estrum, con corectia cor sequiaspedi alit asincia pliae exero doluptaerume pos aut libus am reres...
-        </p>
+      <!-- Teks tengah -->
+      <div class="text-sm text-center sm:text-left sm:flex-1 sm:px-42">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi eius cum vitae et minima, modi, culpa illo dolorum pariatur labore dolore aperiam at aliquam repudiandae temporibus non ad omnis blanditiis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi eius cum vitae et minima, modi, culpa illo dolorum pariatur labore dolore aperiam at aliquam repudiandae temporibus non ad omnis blanditiis.
       </div>
 
-      <!-- Tombol Donasi -->
+      <!-- Tombol kanan -->
       <div x-data="{ showModal: false }">
 
         <!-- Tombol -->
-        <div class="flex-shrink-0 mr-6">
-          <button @click="showModal = true"
-            class="bg-[#1a3a05] hover:bg-green-900 text-white text-xs font-semibold px-8 py-2">
-            Donasi Buku:
+        <div class="sm:w-auto w-full flex sm:justify-end">
+          <button @click="showModal = true" class="bg-[#1a3a05] text-white px-6 py-2   hover:bg-green-700 transition duration-300 text-xs">
+            Donasi Buku
           </button>
         </div>
 
         <!-- Modal -->
-        <div x-show="showModal"
-          class="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50"
+        <div x-show="showModal" class="fixed inset-0 flex items-center justify-center z-50"
           x-transition>
-          <div class="bg-white w-full max-w-md  shadow-lg p-6 relative"  @click.outside="showModal = false">
-            <h2 class="text-lg font-bold mb-4">Form Donasi Buku</h2>
+          <div class="bg-white  shadow-lg border w-11/12 max-w-md p-6" @click.away="showModal = false">
+            <h2 class="text-lg font-semibold mb-4">Form Donasi Buku</h2>
 
-            <!-- Isi Form di sini -->
-            <form>
-              <input type="text" placeholder="Judul Buku" class="w-full mb-3 border p-2  " />
-              <textarea placeholder="Catatan" class="w-full border p-2   mb-3"></textarea>
-              <button type="submit" class="bg-green-700 text-white px-4 py-2  ">Kirim</button>
-            </form>
+            <!-- Isi form -->
 
-            <!-- Tombol Tutup -->
-            <button @click="showModal = false"
-              class="absolute top-2 right-3 text-gray-700 hover:text-red-500 text-xl">&times;</button>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+
+              <!-- Tombol Email -->
+              <a href="mailto:example@email.com" target="_blank" class="w-full">
+                <button class="w-full bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition text-sm">
+                  📧 Kirim Email
+                </button>
+              </a>
+
+              <!-- Tombol WhatsApp -->
+              <a href="https://wa.me/6281234567890" target="_blank" class="w-full">
+                <button class="w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition text-sm">
+                  💬 WhatsApp Kami
+                </button>
+              </a>
+
+            </div>
+
+
+
+
           </div>
         </div>
 
       </div>
 
+
     </div>
 
-    <!-- Hak Cipta -->
     <div class="text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[9px] text-black py-2 select-none">
       © 2025 <a href="https://auriga.or.id" class="hover:text-auriga font-semibold">AURIGA NUSANTARA</a>. SELURUH HAK CIPTA DILINDUNGI UNDANG-UNDANG.
     </div>
 
-    <!-- Bar Hijau Bawah -->
-    <div class="bg-[#1a3a05] h-4"></div>
+    <div class="bg-[#1a3a05] text-white text-xs font-semibold flex justify-end px-6 sm:px-36 py-2">
+    </div>
   </footer>
   @livewireScripts
 </body>
