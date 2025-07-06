@@ -30,8 +30,9 @@
               {{ $books[$currentIndex]->nama_buku }}
             </h2>
             <p class="text-[10px] sm:text-[12px] text-gray-700 line-clamp-5">
-              {{ $books[$currentIndex]->ringkasan }}
+              {{ strip_tags($books[$currentIndex]->ringkasan) }}
             </p>
+
 
           </div>
 
