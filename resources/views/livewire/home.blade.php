@@ -4,13 +4,12 @@
 
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
 
-    <div wire:poll.5s="nextSlide" class="mt-10 mx-auto flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 ">
+    <div wire:poll.5s="nextSlide" class="mt-10 mx-auto flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24">
 
       @if (count($books) > 0)
       <!-- Kotak 16:9 -->
-      <a href="{{ route('user.buku.detail', ['id' => $books[$currentIndex]->id]) }}" class="w-full flex justify-center">
-        <div class="w-full max-w-[680px] bg-white shadow-lg border border-gray-300 flex overflow-hidden rounded-md">
-
+      <a href="{{ route('user.buku.detail', ['id' => $books[$currentIndex]->id]) }}" class="block w-full max-w-[680px] mx-auto">
+        <div class="aspect-[16/9] bg-white shadow-lg border border-gray-300 flex overflow-hidden sm:w-[680px]">
 
           <!-- Gambar -->
           <div class="w-1/2 flex items-center justify-center bg-gray-100">
@@ -21,26 +20,23 @@
 
           <!-- Teks -->
           <div class="w-1/2 p-4 flex flex-col p-7">
-
             <h2 class="text-sm sm:text-lg font-bold mb-4">{{ $books[$currentIndex]->nama_buku }}</h2>
-            <p class="text-[10px] sm:text-[12px] text-gray-700 line-clamp-5">{{ $books[$currentIndex]->ringkasan }}</p>
+            <p class="text-[10px] sm:text-[12px] text-gray-700 line-clamp-5">{!! $books[$currentIndex]->ringkasan !!}</p>
           </div>
 
         </div>
       </a>
 
-
       <!-- Caption bawah -->
-      <h3 class="font-semibold text-sm text-black mt-2 text-left w-full sm:w-[680px]">
+      <h3 class="font-semibold text-sm text-black mt-2 text-left w-full sm:w-[680px] text-center">
         {{ $books[$currentIndex]->nama_buku }}
       </h3>
 
       <!-- Dots navigasi manual -->
-      <div class="flex justify-center space-x-2">
+      <div class="flex justify-center space-x-2 mt-2">
         @foreach ($books as $index => $book)
         <span wire:click="goToSlide({{ $index }})"
-          class="w-2 h-2 rounded-full block cursor-pointer
-                        {{ $index === $currentIndex ? 'bg-black' : 'bg-gray-300' }}">
+          class="w-2 h-2 rounded-full block cursor-pointer {{ $index === $currentIndex ? 'bg-black' : 'bg-gray-300' }}">
         </span>
         @endforeach
       </div>
@@ -48,6 +44,7 @@
       <p class="text-gray-500">Tidak ada buku yang ditampilkan.</p>
       @endif
     </div>
+
 
 
     <!-- Kategori Buku -->
