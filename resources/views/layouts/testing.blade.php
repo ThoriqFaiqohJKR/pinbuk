@@ -188,33 +188,28 @@
 
   <!--footer-->
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
-    <div class="flex flex-col sm:flex-row mt-2 justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-40 py-4 border-b-2 border-black space-y-4 sm:space-y-0">
-
-      <!-- Logo kiri -->
-      <div class="sm:w-auto w-full flex justify-center sm:justify-start">
-        <a href="{{ route('user.buku.index') }}">
-          <img alt="Logo Auriga" src="image/Logo Auriga.png" class="w-28 sm:w-24 h-auto object-contain" />
-        </a>
+    <div class="flex flex-col sm:flex-row items-start sm:items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2 border-black">
+      <div class="mx-auto sm:mx-0">
+        <img
+          src="image/Logo Auriga.png"
+          alt="Auriga Nusantara logo"
+          class="w-24 h-12 object-contain" />
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:flex flex-wrap gap-x-6 md:gap-x-12 lg:gap-x-12 xl:gap-x-16 gap-y-2 text-xs text-black px-4 sm:px-8 md:px-12 lg:px-22 xl:px-48 w-full justify-start mt-4 text-left">
+        <p class="font-semibold">Hutan</p>
+        <p class="font-semibold">Kebun</p>
+        <p class="font-semibold">Tambang dan Energi</p>
+        <p class="font-semibold">Hukum</p>
+        <p class="font-semibold">Novel</p>
+        <p class="font-semibold">Lainnya</p>
       </div>
 
-      <!-- Teks tengah -->
-      <div class="text-sm text-center sm:text-left sm:flex-1 sm:px-42">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi eius cum vitae et minima, modi, culpa illo dolorum pariatur labore dolore aperiam at aliquam repudiandae temporibus non ad omnis blanditiis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi eius cum vitae et minima, modi, culpa illo dolorum pariatur labore dolore aperiam at aliquam repudiandae temporibus non ad omnis blanditiis.
-      </div>
 
-      <!-- Tombol kanan -->
-      <div class="sm:w-auto w-full flex sm:justify-end ">
-        <a>
-          <button class="bg-[#1a3a05] text-white px-6 py-2   hover:bg-green-700 transition duration-300 text-xs">
-            Donasi Buku
-          </button>
-        </a>
-      </div>
+
 
     </div>
-
-    <div class="text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[9px] text-black py-2 select-none">
-      © 2025 <a href="https://auriga.or.id" class="hover:text-auriga font-semibold">AURIGA NUSANTARA</a>. SELURUH HAK CIPTA DILINDUNGI UNDANG-UNDANG.
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 pb-1 text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[13px] text-black select-none">
+      COPYRIGHT © 2025 AURIGA NUSANTARA. ALL RIGHTS RESERVED.
     </div>
 
     <div class="bg-[#1a3a05] text-white text-xs font-semibold flex justify-end px-6 sm:px-36 py-2">
