@@ -252,8 +252,8 @@
     </div>
 
     <!-- Copyright -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 pb-1 text-center text-[11px] sm:text-[12px] text-black select-none">
-      COPYRIGHT © 2025 AURIGA NUSANTARA. ALL RIGHTS RESERVED.
+    <div class="text-center text-[11px] sm:text-[12px] md:text-[11px] lg:text-[12px] xl:text-[9px] text-black py-2 select-none">
+      © 2025 <a href="https://auriga.or.id" class="hover:text-auriga font-semibold">AURIGA NUSANTARA</a>. SELURUH HAK CIPTA DILINDUNGI UNDANG-UNDANG.
     </div>
 
     <div class="bg-[#1a3a05] text-white text-xs font-semibold flex justify-end px-6 sm:px-36 py-2">
