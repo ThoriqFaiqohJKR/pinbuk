@@ -9,7 +9,7 @@
       @if (count($books) > 0)
       <!-- Kotak 16:9 -->
       <a href="{{ route('user.buku.detail', ['id' => $books[$currentIndex]->id]) }}" class="block w-full max-w-[680px] mx-auto">
-        <div class="aspect-[16/9] bg-white shadow-lg border border-gray-300 flex overflow-hidden">
+        <div class="aspect-[16/9] bg-white shadow-lg border border-gray-300 flex overflow-hidden sm:w-[680px]">
 
           <!-- Gambar -->
           <div class="w-1/2 flex items-center justify-center bg-gray-100">
