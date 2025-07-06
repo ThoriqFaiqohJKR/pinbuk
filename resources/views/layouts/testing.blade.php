@@ -189,10 +189,11 @@
   <!--footer-->
   <footer class="border-t border-red-600 mt-auto bg-white poppins-regular">
     <div class="flex sm:flex-row items-start  px-4 sm:px-8 md:px-12 lg:px-20 xl:px-44 py-4 border-b-2">
-      <div class="w-full flex justify-center sm:justify-start">
+      <div class="w-16 h-12 sm:w-20 sm:h-14 lg:w-24 lg:h-16 flex items-center justify-center">
         <a href="{{ route('user.buku.index') }}">
           <img alt="Auriga company logo in gray background with white text, rectangular shape with stylized text Auriga Nusantara" src="{{asset('foto/Logo Auriga.png') }}" class="w-full h-full object-contain" />
         </a>
+
       </div>
       <div class="text-sm text-center sm:text-left sm:flex-1 sm:px-42">
         <p class="font-semibold">Hutan</p>
