@@ -6,11 +6,11 @@
 
     @if (count($books) > 0)
     <!-- Kotak 16:9 -->
-    <a href="{{ route('user.buku.detail', ['id' => $books[$currentIndex]->id]) }}" class="block">
-      <div class="relative w-full sm:w-[680px] aspect-[16/9] overflow-hidden shadow-lg border border-gray-300 flex">
+    <a href="{{ route('user.buku.detail', ['id' => $books[$currentIndex]->id]) }}" class="block w-full max-w-[680px] mx-auto">
+        <div class="aspect-[16/9] bg-white shadow-lg border border-gray-300 flex overflow-hidden">
 
         <!-- Gambar kiri -->
-        <div class="w-1/2 flex items-center justify-center bg-white">
+        <div class="w-1/2 flex items-center justify-center bg-gray-100 py-8">
           <div class="w-[220px] aspect-[1/1.4142] overflow-hidden shadow ">
             <img src="{{ $books[$currentIndex]->foto_buku }}" alt="Judul Buku" class="w-full h-full object-cover">
           </div>
@@ -182,5 +182,3 @@
       }
     </style>
   </div>
-
-</div>
