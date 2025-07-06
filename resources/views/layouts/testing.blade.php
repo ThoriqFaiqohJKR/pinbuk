@@ -193,7 +193,7 @@
       <!-- Logo kiri -->
       <div class="sm:w-auto w-full flex justify-center sm:justify-start">
         <a href="{{ route('user.buku.index') }}">
-          <img alt="Logo Auriga" src="{{asset('foto/Logo Auriga.png') }}" class="w-28 sm:w-24 h-auto object-contain" />
+          <img alt="Logo Auriga" src="image/Logo Auriga.png" class="w-28 sm:w-24 h-auto object-contain" />
         </a>
       </div>
 
@@ -203,49 +203,13 @@
       </div>
 
       <!-- Tombol kanan -->
-      <div x-data="{ showModal: false }">
-
-        <!-- Tombol -->
-        <div class="sm:w-auto w-full flex sm:justify-end">
-          <button @click="showModal = true" class="bg-[#1a3a05] text-white px-6 py-2   hover:bg-green-700 transition duration-300 text-xs">
+      <div class="sm:w-auto w-full flex sm:justify-end ">
+        <a>
+          <button class="bg-[#1a3a05] text-white px-6 py-2   hover:bg-green-700 transition duration-300 text-xs">
             Donasi Buku
           </button>
-        </div>
-
-        <!-- Modal -->
-        <div x-show="showModal" class="fixed inset-0 flex items-center justify-center z-50"
-          x-transition>
-          <div class="bg-white  shadow-lg border w-11/12 max-w-md p-6" @click.away="showModal = false">
-            <h2 class="text-lg font-semibold mb-4">Form Donasi Buku</h2>
-
-            <!-- Isi form -->
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
-
-              <!-- Tombol Email -->
-              <a href="mailto:example@email.com" target="_blank" class="w-full">
-                <button class="w-full bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition text-sm">
-                  📧 Kirim Email
-                </button>
-              </a>
-
-              <!-- Tombol WhatsApp -->
-              <a href="https://wa.me/6281234567890" target="_blank" class="w-full">
-                <button class="w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition text-sm">
-                  💬 WhatsApp Kami
-                </button>
-              </a>
-
-            </div>
-
-
-
-
-          </div>
-        </div>
-
+        </a>
       </div>
-
 
     </div>
 

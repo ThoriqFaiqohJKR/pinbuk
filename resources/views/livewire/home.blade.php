@@ -8,26 +8,23 @@
 
       @if (count($books) > 0)
       <!-- Kotak 16:9 -->
-      <a href="{{ route('user.buku.detail', ['id' => $books[$currentIndex]->id]) }}" class="block w-full max-w-[680px] mx-auto">
-        <div class="aspect-[16/9] bg-white shadow-lg border border-gray-300 flex overflow-hidden">
-
-
+      <a href="{{ route('user.buku.detail', ['id' => $books[$currentIndex]->id]) }}" class="block">
+        <div class="w-full sm:w-[680px] overflow-hidden shadow-lg border border-gray-300 flex aspect-[16/9]">
           <!-- Gambar kiri -->
-          <div class="w-1/2 flex items-center justify-center bg-gray-100">
+          <div class="w-1/2 flex items-center justify-center bg-white">
             <div class="w-[100px] sm:w-[220px] aspect-[1/1.4142] overflow-hidden shadow">
               <img src="{{ $books[$currentIndex]->foto_buku }}" alt="Judul Buku" class="w-full h-full object-cover">
             </div>
           </div>
 
-          <!-- Teks kanan -->
-          <div class="w-1/2 p-4 flex flex-col p-7">
-
-            <h2 class="text-sm sm:text-lg font-bold mb-4">{{ $books[$currentIndex]->nama_buku }}</h2>
-            <p class="text-[10px] sm:text-[12px] text-gray-700 line-clamp-5">{{ $books[$currentIndex]->ringkasan }}</p>
+          <!-- Judul kanan -->
+          <div class="w-1/2 p-4 flex flex-col justify-top">
+            <h2 class="text-sm sm:text-lg font-bold mt-3">{{ $books[$currentIndex]->nama_buku }}</h2>
+            <p class="text-[10px] sm:text-[12px] mt-2 line-clamp-6">{{ $books[$currentIndex]->ringkasan }}</p>
           </div>
         </div>
-      </a>
 
+      </a>
 
       <!-- Caption bawah -->
       <h3 class="font-semibold text-sm text-black mt-2 text-left w-full sm:w-[680px]">
